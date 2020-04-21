@@ -1,0 +1,35 @@
+<%- include("../includes/head"); %>
+  </head>
+  <body>
+<%- include("../includes/top-navbar"); %>
+   <br>
+<div class="container">
+  <div class="row">
+    <% if(product){  %>
+    <div class="col-4 offset-4">
+      <div class="card">
+        <img
+          src="<%=product.imgurl%>"
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="card-body">
+          <h5 class="card-title"><%=product.title %></h5>
+          <h5 class="card-title">Rs. <%=product.price %></h5>
+          <p class="card-text">
+           <%=product.desc%>
+          </p>
+          <form action="/add-to-cart" method="post">
+            <button type="submit" class="btn btn-primary">Add To Cart</button>
+            <input type="hidden" name="productId" value="<%=product.id%>">
+          </form>
+        </div>
+      </div>
+    </div>
+    <% } else { %>
+    <h1>Products not Found!</h1>
+    <% } %>
+  </div>
+</div>
+<%- include("../includes/footer"); %>
+

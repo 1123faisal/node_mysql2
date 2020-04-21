@@ -1,0 +1,45 @@
+<%- include("../includes/head"); %>
+  </head>
+  <body>
+<%- include("../includes/top-navbar"); %>
+   <div class="container">
+    <h1>Page Cart!</h1>
+
+    <%if(cart.products.length){%>
+      <ul class="list-group">
+<% cart.products.forEach(pro => { %>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <%= pro.productData.title %>
+    <span class="badge badge-primary badge-pill"><%=pro.qty%> X <%=pro.productData.price%> </span>
+    <form action="/cart-delete-item" method="post">
+      <input type="hidden" name="id" value="<%=pro.productData.id%>">
+    <button type="submit" class="btn btn-primary">Delete</button>
+  </form>
+  </li>
+<% }); %>      
+    </ul>
+
+    <div class="text-center">
+      <br>
+       <span class="badge badge-primary badge-pill">
+     <h3>Total Amount : <%=cart.totalPrice%></h3> 
+      </span>
+    
+    </div>
+<%} else { %> 
+  
+  <div class="text-center">
+    <br>
+     <span class="badge badge-primary badge-pill">
+   <h3>No Product Found in Cart!</h3> 
+    </span>
+  
+
+  <%}%>
+
+
+
+</div>
+
+<%- include("../includes/footer"); %>
+

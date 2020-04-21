@@ -1,0 +1,37 @@
+<%- include("../includes/head"); %>
+
+  </head>
+  <body>
+<%- include("../includes/top-navbar"); %>
+ 
+    <h1>All Products List</h1>
+    <div class="container">
+      <div class="row">
+        <% if(prods.length){ for(let pro of prods){ %>
+        <div class="col-4">
+          <div class="card">
+            <img
+              src="<%=pro.imgurl%>"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title"><%=pro.title %></h5>
+              <h5 class="card-title">Rs. <%=pro.price %></h5>
+              <p class="card-text">
+               <%=pro.desc%>
+              </p>
+              <form action="/cart" method="post">
+                <a href="/products/<%=pro.id%>" class="btn btn-info">Details</a>
+                <button type="submit" class="btn btn-primary">Add To Cart</button>
+                <input type="hidden" name="productId" value="<%=pro.id%>">
+              </form>
+            </div>
+          </div>
+        </div>
+        <% } } else { %>
+        <h1>Products not Found!</h1>
+        <% } %>
+      </div>
+    </div>
+    <%- include("../includes/footer"); %>
