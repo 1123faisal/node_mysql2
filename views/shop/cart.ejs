@@ -5,14 +5,14 @@
    <div class="container">
     <h1>Page Cart!</h1>
 
-    <%if(cart.products.length){%>
+    <%if(products.length){%>
       <ul class="list-group">
-<% cart.products.forEach(pro => { %>
+<% products.forEach(pro => { %>
   <li class="list-group-item d-flex justify-content-between align-items-center">
-    <%= pro.productData.title %>
-    <span class="badge badge-primary badge-pill"><%=pro.qty%> X <%=pro.productData.price%> </span>
+    <%= pro.title %>
+    <span class="badge badge-primary badge-pill"><%=pro.cartitem.quantity%> X <%=pro.price%> </span>
     <form action="/cart-delete-item" method="post">
-      <input type="hidden" name="id" value="<%=pro.productData.id%>">
+      <input type="hidden" name="id" value="<%=pro.id%>">
     <button type="submit" class="btn btn-primary">Delete</button>
   </form>
   </li>
@@ -22,9 +22,13 @@
     <div class="text-center">
       <br>
        <span class="badge badge-primary badge-pill">
-     <h3>Total Amount : <%=cart.totalPrice%></h3> 
+     <h3>Total Amount :<%= totalPrice %> </h3> 
       </span>
-    
+    <form action="/create-order" method="post">
+    <br>
+
+    <button type="submit" class="btn btn-primary">Place Order</button>
+    </form>
     </div>
 <%} else { %> 
   

@@ -3,7 +3,6 @@ const shopCtrl = require("../controllers/shop");
 
 const route = express.Router();
 
-
 route.get("/", shopCtrl.getIndex);
 
 route.get("/products", shopCtrl.getProducts);
@@ -14,7 +13,9 @@ route.get("/cart", shopCtrl.getCart);
 
 route.post("/cart", shopCtrl.postCart);
 
-route.post("/cart-delete-item",shopCtrl.postdeleteCartItem);
+route.post("/cart-delete-item", shopCtrl.postdeleteCartItem);
+
+route.post("/create-order", shopCtrl.postOrder);
 
 route.get("/orders", shopCtrl.getOrders);
 
